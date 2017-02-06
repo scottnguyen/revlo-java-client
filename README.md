@@ -7,5 +7,3 @@ TODO
 --
 
 * Apply Generator pattern on Reward/Redemption/Loyalty Collection DAOs
-* Add JavaDocs
-* Add Mock tests and Unit tests
