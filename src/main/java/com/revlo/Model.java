@@ -27,8 +27,8 @@ public interface Model {
         private int rewardId;
         private int redemptionId;
         private String createdAt;
-        private boolean refunded;
-        private boolean completed;
+        private Boolean refunded;
+        private Boolean completed;
         private Map<String, String> userInput;
         private String username;
     }
@@ -40,13 +40,12 @@ public interface Model {
     class Reward implements Model {
         private int rewardId;
         private String createdAt;
-        private boolean refunded;
-        private boolean completed;
         private String title;
         private String botCommand;
-        private boolean enabled;
-        private boolean subOnly;
+        private Boolean enabled;
+        private Boolean subOnly;
         private List<String> inputFields;
+        private int points;
     }
 
 }

@@ -156,7 +156,7 @@ public class RevloClient implements Revlo {
      */
     public RewardResponse getReward(GetRewardRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/rewards/" + request.getId();
-        Type returnType = Model.Reward.class;
+        Type returnType = RewardResponse.class;
         return (RewardResponse)this.invoke(HttpMethod.GET, endpoint, request.payload(), returnType);
     }
 
