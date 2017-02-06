@@ -11,34 +11,33 @@ public interface Model {
     @Data
     class Loyalty implements Model {
         private String fan;
-        private int total_points;
-        private int current_points;
-        private String updated_at;
+        private int totalPoints;
+        private int currentPoints;
+        private String updatedAt;
     }
 
     @Data
     class Redemption implements Model {
-        private int reward_id;
-        private int redemption_id;
-        private String created_at;
+        private int rewardId;
+        private int redemptionId;
+        private String createdAt;
         private boolean refunded;
         private boolean completed;
-        private Map<String, String> user_input;
+        private Map<String, String> userInput;
         private String username;
     }
 
     @Data
     class Reward implements Model {
-        private int reward_id;
-        private String created_at;
+        private int rewardId;
+        private String createdAt;
         private boolean refunded;
         private boolean completed;
-        private Map<String, String> user_input;
         private String title;
-        private String bot_command;
+        private String botCommand;
         private boolean enabled;
-        private boolean sub_only;
-        private List<String> input_fields;
+        private boolean subOnly;
+        private List<String> inputFields;
     }
 
 }

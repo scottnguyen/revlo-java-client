@@ -1,7 +1,9 @@
 package com.revlo.clients;
 
 import com.google.common.io.CharStreams;
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.revlo.Model;
 import com.revlo.exceptions.RevloClientException;
 import com.revlo.exceptions.RevloServiceException;
@@ -21,11 +23,7 @@ import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 
@@ -48,7 +46,9 @@ public class RevloClient implements Revlo {
     private int version;
     private String baseUrl;
     private HttpClient httpClient;
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON = new GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create();
 
     public RevloClient(String apiKey) {
         this(apiKey, HttpClients.createDefault());
@@ -59,10 +59,14 @@ public class RevloClient implements Revlo {
     }
 
     RevloClient(String apiKey, HttpClient httpClient, String baseUrl, int version) {
+        this(apiKey, httpClient, HttpHost.create(baseUrl), 1);
+        this.baseUrl = baseUrl;
+    }
+
+    RevloClient(String apiKey, HttpClient httpClient, HttpHost httpHost, int version) {
         this.apiKey = apiKey;
         this.version = version;
-        this.baseUrl = baseUrl;
-        this.httpHost = HttpHost.create(baseUrl);
+        this.httpHost = httpHost;
         this.httpClient = httpClient;
     }
 
@@ -72,7 +76,6 @@ public class RevloClient implements Revlo {
         try{
             HttpResponse httpResponse = this.makeRequest(method, endpoint, payload);
             int statusCode = httpResponse.getStatusLine().getStatusCode();
-            System.out.println(httpResponse.toString());
             if (statusCode < 400) {
                 is = httpResponse.getEntity().getContent();
                 reader = new BufferedReader(new InputStreamReader(is));
@@ -115,7 +118,6 @@ public class RevloClient implements Revlo {
                 throw new IOException("Unknown HttpMethod type!");
         }
         httpRequest.addHeader("x-api-key", this.apiKey);
-        System.out.println(httpRequest.toString());
         return httpClient.execute(this.httpHost, httpRequest);
     }
 
