@@ -148,12 +148,25 @@ public class RevloClient implements Revlo {
         return query.substring(0, query.length() - 1);
     }
 
+    /**
+     * Get Rewards Response on a specific reward.
+     * @param request
+     * @return A response object containing a reward object
+     * @throws RevloServiceException
+     */
     public RewardResponse getReward(GetRewardRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/rewards/" + request.getId();
         Type returnType = Model.Reward.class;
         return (RewardResponse)this.invoke(HttpMethod.GET, endpoint, request.payload(), returnType);
     }
 
+    /**
+     * Rewards on your broadcaster account
+     *
+     * @param request
+     * @return A list of rewards, total rewards count, and rewards per page.
+     * @throws RevloServiceException
+     */
     public RewardsResponse getRewards(GetRewardsRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/rewards" + queryParams(request.params());
 
@@ -161,30 +174,62 @@ public class RevloClient implements Revlo {
         return (RewardsResponse)this.invoke(HttpMethod.GET, endpoint, request.payload(), returnType);
     }
 
+    /**
+     * Get a loyalty object that contains the totalPoints and currentPoints
+     * of a viewer on the broadcaster's account.
+     * @param request
+     * @return A response object containing a loyalty object.
+     * @throws RevloServiceException
+     */
     public LoyaltyResponse getLoyalty(GetLoyaltyRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/fans/" + request.getUsername() + "/points";
         Type returnType = LoyaltyResponse.class;
         return (LoyaltyResponse)this.invoke(HttpMethod.GET, endpoint, request.payload(), returnType);
     }
 
+    /**
+     * Add or subtract points from an existing viewer
+     * @param request
+     * @return
+     * @throws RevloServiceException
+     */
     public LoyaltyResponse bonusPoints(BonusPointsRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/fans/" + request.getUsername() + "/points/bonus";
         Type returnType = LoyaltyResponse.class;
         return (LoyaltyResponse)this.invoke(HttpMethod.POST, endpoint, request.payload(), returnType);
     }
 
+    /**
+     * Reward redemptions on your broadcaster account.
+     * @param request
+     * @return A response object containing a list of redemptions, total redemptions count,
+     * and redemptions per page.
+     * @throws RevloServiceException
+     */
     public RedemptionsResponse getRedemptions(GetRedemptionsRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/redemptions" + queryParams(request.params());
         Type returnType = RedemptionsResponse.class;
         return (RedemptionsResponse)this.invoke(HttpMethod.GET, endpoint, request.payload(), returnType);
     }
 
+    /**
+     * Get a specific redemption record.
+     * @param request
+     * @return A response object containing a redemption.
+     * @throws RevloServiceException
+     */
     public RedemptionResponse getRedemption(GetRedemptionRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/redemptions/" + request.getId();
         Type returnType = RedemptionResponse.class;
         return (RedemptionResponse)this.invoke(HttpMethod.GET, endpoint, request.payload(), returnType);
     }
 
+    /**
+     * Update the redemption record. Modifiable fields include: completed.
+     * @param request
+     * @return A response object containing the redemption object if a successful update was made.
+     * @throws RevloServiceException
+     */
     public RedemptionResponse updateRedemption(UpdateRedemptionRequest request) throws RevloServiceException {
         String endpoint = "/" + this.version + "/redemptions/" + request.getId();
         Type returnType = RedemptionResponse.class;

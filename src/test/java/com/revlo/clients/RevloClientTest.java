@@ -116,7 +116,7 @@ public class RevloClientTest {
         RewardsResponse response = client.getRewards(request);
         List<Model.Reward> li = response.getRewards();
         assertEquals(3, response.getTotal());
-        assertEquals(25, response.getPage_size());
+        assertEquals(25, response.getPageSize());
         assertEquals(3, response.getRewards().size());
     }
 
@@ -159,7 +159,7 @@ public class RevloClientTest {
         RedemptionsResponse response = client.getRedemptions(request);
         List<Model.Redemption> li = response.getRedemptions();
         assertEquals(4, response.getTotal());
-        assertEquals(25, response.getPage_size());
+        assertEquals(25, response.getPageSize());
         assertEquals(4, response.getRedemptions().size());
     }
 

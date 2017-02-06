@@ -4,6 +4,6 @@ import com.revlo.Model;
 import lombok.Data;
 
 @Data
-public class LoyaltyResponse {
+public class LoyaltyResponse implements Response {
     private Model.Loyalty loyalty;
 }

@@ -7,9 +7,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RewardsResponse {
+public class RewardsResponse implements Response {
     private List<Model.Reward> rewards;
-    private int page_size;
+    private int pageSize;
     private int total;
 }
 

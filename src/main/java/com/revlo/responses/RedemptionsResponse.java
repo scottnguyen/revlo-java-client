@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RedemptionsResponse {
+public class RedemptionsResponse implements Response {
     private List<Model.Redemption> redemptions;
     private int total;
-    private int page_size;
+    private int pageSize;
 }

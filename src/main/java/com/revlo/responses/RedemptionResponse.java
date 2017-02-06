@@ -5,7 +5,7 @@ import com.revlo.Model;
 import lombok.Data;
 
 @Data
-public class RedemptionResponse {
+public class RedemptionResponse implements Response {
     private Model.Redemption redemption;
 }
 

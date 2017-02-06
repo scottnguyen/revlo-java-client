@@ -8,6 +8,9 @@ import java.util.Map;
 
 public interface Model {
 
+    /**
+     * Data model of a Revlo Loyalty object.
+     */
     @Data
     class Loyalty implements Model {
         private String fan;
@@ -16,6 +19,9 @@ public interface Model {
         private String updatedAt;
     }
 
+    /**
+     * Data model of a Revlo Redemption object.
+     */
     @Data
     class Redemption implements Model {
         private int rewardId;
@@ -27,6 +33,9 @@ public interface Model {
         private String username;
     }
 
+    /**
+     * Data model of a Revlo Reward object.
+     */
     @Data
     class Reward implements Model {
         private int rewardId;
