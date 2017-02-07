@@ -1,13 +1,13 @@
 package com.revlo.responses;
 
-import com.revlo.Model;
+import com.revlo.models.Redemption;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
 public class RedemptionsResponse implements Response {
-    private List<Model.Redemption> redemptions;
+    private List<Redemption> redemptions;
     private int total;
     private int pageSize;
 }

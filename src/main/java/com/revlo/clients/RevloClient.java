@@ -4,7 +4,6 @@ import com.google.common.io.CharStreams;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.revlo.Model;
 import com.revlo.exceptions.RevloClientException;
 import com.revlo.exceptions.RevloServiceException;
 import com.revlo.requests.BonusPointsRequest;
