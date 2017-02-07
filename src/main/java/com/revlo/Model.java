@@ -9,7 +9,8 @@ import java.util.Map;
 public interface Model {
 
     /**
-     * Data model of a Revlo Loyalty object.
+     * Data model of a Revlo Loyalty object. This class has lombok generated methods.
+     * See source code for methods generated.
      */
     @Data
     class Loyalty implements Model {
@@ -20,7 +21,8 @@ public interface Model {
     }
 
     /**
-     * Data model of a Revlo Redemption object.
+     * Data model of a Revlo Redemption object. This class has lombok generated methods.
+     * See source code for methods generated.
      */
     @Data
     class Redemption implements Model {
@@ -34,7 +36,8 @@ public interface Model {
     }
 
     /**
-     * Data model of a Revlo Reward object.
+     * Data model of a Revlo Reward object. This class has lombok generated methods.
+     * See source code for methods generated.
      */
     @Data
     class Reward implements Model {
