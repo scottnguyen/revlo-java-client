@@ -1,9 +1,9 @@
 package com.revlo.responses;
 
-import com.revlo.models.Loyalty;
+import com.revlo.Model;
 import lombok.Data;
 
 @Data
 public class LoyaltyResponse implements Response {
-    private Loyalty loyalty;
+    private Model.Loyalty loyalty;
 }

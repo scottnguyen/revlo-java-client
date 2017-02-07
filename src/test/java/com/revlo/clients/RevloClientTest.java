@@ -1,10 +1,7 @@
 package com.revlo.clients;
 
 import com.google.common.collect.ImmutableMap;
-import com.revlo.models.Loyalty;
-import com.revlo.models.Reward;
-import com.revlo.models.Redemption;
-
+import com.revlo.Model;
 import com.revlo.exceptions.RevloClientException;
 import com.revlo.requests.*;
 import com.revlo.responses.*;
@@ -17,6 +14,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -116,7 +114,7 @@ public class RevloClientTest {
         GetRewardsRequest request = GetRewardsRequest.builder().build();
         this.client = new RevloClient("apiKey", fakeClient, httpHost,1);
         RewardsResponse response = client.getRewards(request);
-        List<Reward> li = response.getRewards();
+        List<Model.Reward> li = response.getRewards();
         assertEquals(3, response.getTotal());
         assertEquals(25, response.getPageSize());
         assertEquals(3, response.getRewards().size());
@@ -185,7 +183,7 @@ public class RevloClientTest {
         this.client = new RevloClient("apiKey", fakeClient, httpHost,1);
 
         RedemptionResponse response = client.getRedemption(request);
-        Redemption redemption = response.getRedemption();
+        Model.Redemption redemption = response.getRedemption();
         assertEquals(2, redemption.getRewardId());
         assertEquals(1337, redemption.getRedemptionId());
         assertEquals("2016-11-17T21:24:17.069Z", redemption.getCreatedAt());
@@ -219,7 +217,7 @@ public class RevloClientTest {
         this.client = new RevloClient("apiKey", fakeClient, httpHost,1);
 
         RedemptionResponse response = client.updateRedemption(request);
-        Redemption redemption = response.getRedemption();
+        Model.Redemption redemption = response.getRedemption();
         assertEquals(2, redemption.getRewardId());
         assertEquals(1337, redemption.getRedemptionId());
         assertEquals("2016-11-17T21:24:17.069Z", redemption.getCreatedAt());
@@ -251,7 +249,7 @@ public class RevloClientTest {
         this.client = new RevloClient("apiKey", fakeClient, httpHost,1);
 
         RewardResponse response = client.getReward(request);
-        Reward reward = response.getReward();
+        Model.Reward reward = response.getReward();
         assertEquals(3, reward.getRewardId());
         assertEquals("2016-11-17T21:07:47.762Z", reward.getCreatedAt());
         assertEquals("Display Random giphy", reward.getTitle());
@@ -283,7 +281,7 @@ public class RevloClientTest {
         this.client = new RevloClient("apiKey", fakeClient, httpHost,1);
 
         LoyaltyResponse response = client.getLoyalty(request);
-        Loyalty loyalty= response.getLoyalty();
+        Model.Loyalty loyalty= response.getLoyalty();
         assertEquals("pokemaniac", loyalty.getFan());
         assertEquals(0,loyalty.getTotalPoints());
         assertEquals(0,loyalty.getCurrentPoints());
