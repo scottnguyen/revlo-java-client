@@ -1,6 +1,8 @@
 RevloClient
 --
 
+With Revlo shutting down, this package is now [DEPRECATED](https://blog.revlo.co/the-adventure-comes-to-an-end-fa03f7fab84e).
+
 Revlo API Java SDK. See [Revlo API specification](https://github.com/teamrevlo/revloapi) for more information or the 
 [JavaDocs](https://scottnguyen.github.io/revlo-java-client/).
 
